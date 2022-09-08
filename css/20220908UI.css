@@ -1,0 +1,197 @@
+/* 전체 그리드(grid)-컨테이너(container) 레이아웃 */
+.container {
+    display: grid;
+    grid-template-columns: (4, 1fr 2fr 2fr 1fr);
+    grid-template-rows: (6, 1fr);
+    grid-gap: 10px 0;
+}
+
+/* 해더(header) 영역 시작 */
+
+.header { 
+    background-color: navy; 
+    padding: 40px;
+}
+.header a { text-decoration: none; color:white;}
+.head1 {
+    grid-column: 1 / 2;
+    grid-row: 1;
+}
+.head1 a { position:absolute; }
+.head2 {
+    grid-column: 2 / 4;
+    grid-row: 1;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.head3 {
+    grid-column: 4 / 5;
+    grid-row: 1;
+}
+/* 메뉴 바 */
+.head3 .menu { 
+    display: inline-block; 
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+.menu:hover .menu-icon { border-top: 3px solid red; }
+.line1, .line2, .line3 {
+	margin: 5px;
+	width: 21px;
+	border-top: 3px solid white; 					
+	transition: border-top 1s;				
+}
+.head3 .line1 { transform-origin: left 100%; transition: transform 1s; }
+.head3 .line2 { transition: opacity 0.5s; }		
+.head3 .line3 { transform-origin: left 0%;	}
+.menu:hover .line1 { transform: rotate(45deg); }
+.menu:hover .line2 { opacity: 0; }				
+.menu:hover .line3 { transform: rotate(-45deg); }
+
+/* 해더(header) 영역 끝 */
+/* 내비게이션(navigation) 영역 시작 */
+
+.nav {
+    grid-column: 1 / 5;
+    grid-row: 2 / 3;
+    padding: 10px 0;
+    list-style: none;
+}
+.flex-container {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: 10px;
+}
+.nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+.nav a:hover {
+    color: white;
+    text-shadow: 1.5px 1.5px 5px black;
+}
+
+/* 내비게이션(navigation) 영역 끝 */
+/* 메인(main) 영역 시작 */
+
+.main {
+    margin: 0 10px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-clip: content-box;
+}
+
+/* 메인1 */
+.m1 {
+    grid-column: 1 / 3;
+    grid-row: 3 / 6;
+    min-width:364px;
+}
+.m1 iframe { min-width:300px; width:100%;}
+#banner { 
+    background-color:lightgray; 
+    min-width:300px; width:auto; min-height:250px; height:auto; 
+}
+
+/* 메인2, 3 */
+.m2 {
+    grid-column: 3 / 5;
+    grid-row: 3 / 4;
+}
+.m3 {
+    grid-column: 3 / 5;
+    grid-row: 4 / 5;
+}
+.main h2 { font-size: 20px; font-weight: bold; }
+.main p, a { line-height: 22px;}
+.main hr { 
+    border-top: 1px dotted black;
+    margin: 3px;
+}
+.m3 h2 { float: left;}
+.m3 .more {
+    position: static;
+    margin-left: 10px;
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #fff;
+    line-height: 20px;
+    font-size: 12px;
+    border-radius: 12px;
+    background-color: #009fd1;
+}
+.more:hover { background-color: black; }
+.m3 a { text-decoration: none; }
+.notice a { color: black; }
+.notice a:hover { text-decoration: underline; }
+.notice a::after { 
+    content: "N";
+    display: inline-block;
+    color: white;
+    background-color:navy;
+    width: 20px; height:20px; 
+    border-radius:50%;
+    text-align: center;
+    animation: bling 1s;
+    animation-iteration-count: infinite;
+}
+@keyframes bling {
+    0% {background-color: navy;}
+    50% {background-color: green;}
+    100% {background-color: navy;}
+}
+
+/* 메인(main) 영역 끝 */
+/* 푸터(footer) 영역 시작 */
+
+.footer {
+    grid-column: 1 / 5;
+    grid-row: 6;
+    background-color: lightgrey;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 푸터(footer) 영역 끝 */
+
+/* top 버튼 */
+#top {
+    text-decoration: none;
+    font-size: 30px;
+    position:fixed;
+    bottom: 20px; right:10px;
+}
+
+/* 미디어쿼리(media query) */
+@media screen and (max-width: 576px) {
+    .container {
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: repeat(6, auto);
+    }
+    .nav {
+        display: none;
+    }
+    .main { min-width: 362px;}
+    .m1 {
+        grid-column: 1 / 5;
+        grid-row: 2;
+    }
+    .m2 {
+        grid-column: 1 / 5;
+        grid-row: 3;
+    }
+    .m3 {
+        grid-column: 1 / 5;
+        grid-row: 4;
+    }
+    .footer {
+        grid-column: 1 / 5;
+        grid-row: 5;
+    }
+}
