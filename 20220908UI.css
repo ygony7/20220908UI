@@ -32,9 +32,9 @@
 /* 메뉴 바 */
 .head3 .menu { 
     display: inline-block; 
-    position: absolute;
-    top: 40px;
-    right: 40px;
+    width: 10px;
+    margin : auto;
+
 }
 .menu:hover .menu-icon { border-top: 3px solid red; }
 .line1, .line2, .line3 {
